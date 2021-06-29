@@ -316,9 +316,24 @@ namespace ttask_vodovoz
             get { return _click_delete_order; }
         }
 
+        private readonly DelegateCommand<string> _click_refresh;
+        public DelegateCommand<string> Click_refresh
+        {
+            get { return _click_refresh; }
+        }
+
         #endregion
 
         #region Functions
+
+        public void refresh_all()
+        {
+            fill_emp();
+            fill_dep();
+            fill_orders();
+            cb_employee_dep.Clear();
+            cb_employee_dep = sq.fill_cb_employee();
+        }
 
         public void fill_emp()
         {
@@ -440,6 +455,7 @@ namespace ttask_vodovoz
 
         #endregion
 
+        #region Constructor
         public ViewMainWindow()
         {
             fill_emp();
@@ -500,19 +516,26 @@ namespace ttask_vodovoz
             (s) => { /* perform some action */ delete_emp(); } //, //Execute
             //(s) => {  } //CanExecute
             );
-            //команда клика на изменение order
+
             _click_delete_dep = new DelegateCommand<string>(
             (s) => { /* perform some action */ delete_dep(); }//, //Execute
             //(s) => {  } //CanExecute
             );
-            //команда клика на изменение order
+
             _click_delete_order = new DelegateCommand<string>(
             (s) => { /* perform some action */ delete_order(); }//, //Execute
+            //(s) => {  } //CanExecute
+            );
+
+            //refresh_all
+            _click_refresh = new DelegateCommand<string>(
+            (s) => { /* perform some action */ refresh_all(); }//, //Execute
             //(s) => {  } //CanExecute
             );
 
 
             #endregion
         }
+#endregion
     }
 }

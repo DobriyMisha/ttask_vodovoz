@@ -49,6 +49,7 @@
                                     <Button Margin="2" Width="100" Command="{Binding Click_add_employee}">Добавить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_update_employee}">Изменить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_delete_emp}">Удалить</Button>
+                                    <Button Margin="2" Width="100" Command="{Binding Click_refresh}">Обновить</Button>
                                 </StackPanel>
                                 
                             </StackPanel>
@@ -90,6 +91,7 @@
                                     <Button Margin="2" Width="100" Command="{Binding Click_add_dep}">Добавить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_update_dep}">Изменить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_delete_dep}">Удалить</Button>
+                                    <Button Margin="2" Width="100" Command="{Binding Click_refresh}">Обновить</Button>
                                 </StackPanel>
 
                             </StackPanel>
@@ -113,7 +115,7 @@
                                 <DataGridTextColumn Header="Принявший" Binding="{Binding sname}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="ID сотрудника" Binding="{Binding autor_id}"></DataGridTextColumn>
                             </DataGrid.Columns>
-                            
+
                         </DataGrid>
 
                         <GroupBox>
@@ -130,6 +132,7 @@
                                     <Button Margin="2" Width="100" Command="{Binding Click_add_order}">Добавить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_update_order}">Изменить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_delete_order}">Удалить</Button>
+                                    <Button Margin="2" Width="100" Command="{Binding Click_refresh}">Обновить</Button>
                                 </StackPanel>
 
                             </StackPanel>
@@ -138,10 +141,6 @@
 
                     </StackPanel>
                 </TabItem>
-
-                <Button Height="20" Width="20" Content="Button">
-                    
-                </Button>
 
             </TabControl>
         </StackPanel>

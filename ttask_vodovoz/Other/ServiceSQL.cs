@@ -64,6 +64,7 @@ namespace ttask_vodovoz
                 catch (Exception ex)
                 {
                     //Вернём пустое либо неполное в случае ошибки
+                    connection.Close();
                     MessageBox.Show(ex.Message);
                     return _emp_fill;
                 }
@@ -105,6 +106,7 @@ namespace ttask_vodovoz
                 }
                 catch (Exception ex)
                 {
+                    connection.Close();
                     MessageBox.Show(ex.Message);
                     //Вернём пустое либо неполное в случае ошибки
                     return _dep_fill;
@@ -152,6 +154,7 @@ namespace ttask_vodovoz
                 }
                 catch (Exception ex)
                 {
+                    connection.Close();
                     MessageBox.Show(ex.Message);
                     //Вернём пустое либо неполное в случае ошибки
                     return _orders_fill;
@@ -241,8 +244,11 @@ namespace ttask_vodovoz
                             command = new MySqlCommand("select id from department where description = '" + description + "'", conn);
                             string id_de = command.ExecuteScalar().ToString();
 
-                            command = new MySqlCommand("update employee set description='" + id_de + "' where id = " + lii + " ;", conn);
-                            command.ExecuteNonQuery();
+                            if (id_de != null)
+                            {
+                                command = new MySqlCommand("update employee set department_id=" + id_de + " where id = " + lii + " ;", conn);
+                                command.ExecuteNonQuery();
+                            }
 
                         }
                         MessageBox.Show("Успешно!");
@@ -250,8 +256,9 @@ namespace ttask_vodovoz
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         conn.Close();
+                        MessageBox.Show(ex.Message);
+                        
                     }
                     
                 }
@@ -294,8 +301,9 @@ namespace ttask_vodovoz
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         conn.Close();
+                        MessageBox.Show(ex.Message);
+                        
                     }
                     
                 }
@@ -384,8 +392,11 @@ namespace ttask_vodovoz
                         command = new MySqlCommand("select id from department where description = '" + description + "'", conn);
                         string thing = command.ExecuteScalar().ToString();
 
-                        command = new MySqlCommand("update Employee set department_id = '" + thing + "' where id = " + id + " ;", conn);
-                        command.ExecuteNonQueryAsync();
+                        if(thing != null)
+                        {
+                            command = new MySqlCommand("update Employee set department_id = " + thing + " where id = " + id + " ;", conn);
+                            command.ExecuteNonQueryAsync();
+                        }
 
                         MessageBox.Show("Успешно!");
 
@@ -423,7 +434,7 @@ namespace ttask_vodovoz
                         command = new MySqlCommand("update department set description = '" + description + "' where id = " + id + " ;", conn);
                         command.ExecuteNonQueryAsync();
 
-                        command = new MySqlCommand("update department set executive_id=" + executive_id + " where id = " + id + " ;", conn);
+                        command = new MySqlCommand("update department set executive_id = " + executive_id + " where id = " + id + " ;", conn);
                         command.ExecuteNonQuery();
 
                         MessageBox.Show("Успешно!");
@@ -432,8 +443,9 @@ namespace ttask_vodovoz
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         conn.Close();
+                        MessageBox.Show(ex.Message);
+                        
                     }
                     
                 }
@@ -475,8 +487,9 @@ namespace ttask_vodovoz
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         conn.Close();
+                        MessageBox.Show(ex.Message);
+                        
                     }
                 }
             }
