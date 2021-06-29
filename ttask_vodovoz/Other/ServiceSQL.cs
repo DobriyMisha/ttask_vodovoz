@@ -491,5 +491,81 @@ namespace ttask_vodovoz
 
         #endregion
 
+        #region Delete Data
+
+        public void delete_employee(string id)
+        {
+            MySqlCommand command;
+            using(MySqlConnection conn = new MySqlConnection(MyConString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    command = new MySqlCommand("delete from employee where id = "+id+" ;", conn);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Успешно!");
+
+                    conn.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+            }
+        }
+
+        public void delete_department(string id)
+        {
+            MySqlCommand command;
+            using (MySqlConnection conn = new MySqlConnection(MyConString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    command = new MySqlCommand("delete from department where id = " + id + " ;", conn);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Успешно!");
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+            }
+        }
+
+        public void delete_order(string id)
+        {
+            MySqlCommand command;
+            using (MySqlConnection conn = new MySqlConnection(MyConString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    command = new MySqlCommand("delete from orders where id = " + id + " ;", conn);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Успешно!");
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+            }
+        }
+
+        #endregion
+
     }
 }

@@ -298,6 +298,24 @@ namespace ttask_vodovoz
             get { return _click_update_order; }
         }
 
+        private readonly DelegateCommand<string> _click_delete_emp;
+        public DelegateCommand<string> Click_delete_emp
+        {
+            get { return _click_delete_emp; }
+        }
+
+        private readonly DelegateCommand<string> _click_delete_dep;
+        public DelegateCommand<string> Click_delete_dep
+        {
+            get { return _click_delete_dep; }
+        }
+
+        private readonly DelegateCommand<string> _click_delete_order;
+        public DelegateCommand<string> Click_delete_order
+        {
+            get { return _click_delete_order; }
+        }
+
         #endregion
 
         #region Functions
@@ -394,21 +412,30 @@ namespace ttask_vodovoz
         {
             if(Select_employee != null)
             {
-
+                sq.delete_employee(Select_employee.id.ToString());
             }
+            employee.Clear();
+            fill_emp();
         }
 
         public void delete_dep()
         {
             if(Select_department != null)
             {
-
+                sq.delete_department(Select_department.id.ToString());
             }
+            departments.Clear();
+            fill_dep();
         }
 
         public void delete_order()
         {
-
+            if(Select_order!= null)
+            {
+                sq.delete_order(Select_order.id.ToString());
+            }
+            orders.Clear();
+            fill_orders();
         }
 
         #endregion
@@ -467,6 +494,23 @@ namespace ttask_vodovoz
             (s) => { /* perform some action */ update_order(); }//, //Execute
             //(s) => {  } //CanExecute
             );
+
+            //команды удаления строки
+            _click_delete_emp = new DelegateCommand<string>(
+            (s) => { /* perform some action */ delete_emp(); } //, //Execute
+            //(s) => {  } //CanExecute
+            );
+            //команда клика на изменение order
+            _click_delete_dep = new DelegateCommand<string>(
+            (s) => { /* perform some action */ delete_dep(); }//, //Execute
+            //(s) => {  } //CanExecute
+            );
+            //команда клика на изменение order
+            _click_delete_order = new DelegateCommand<string>(
+            (s) => { /* perform some action */ delete_order(); }//, //Execute
+            //(s) => {  } //CanExecute
+            );
+
 
             #endregion
         }
