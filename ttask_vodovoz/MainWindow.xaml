@@ -11,6 +11,7 @@
             <TabControl Height="350" TabStripPlacement="Left">
                 <TabItem Padding="10" Header="Сотрудники">
                     <StackPanel>
+                        
                         <!--СОТРУДНИКИ ДАТАГРИД-->
                         <DataGrid Height="200" AutoGenerateColumns="False" 
                                   ItemsSource="{Binding Path=employee}"
@@ -47,7 +48,7 @@
                                     <Button Margin="2" Width="100" Command="{Binding Click_clear_employee}">Очистить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_add_employee}">Добавить</Button>
                                     <Button Margin="2" Width="100" Command="{Binding Click_update_employee}">Изменить</Button>
-                                    <Button Margin="2" Width="100" Command="{Binding Click_delete_employee}">Удалить</Button>
+                                    <Button Margin="2" Width="100" Command="{Binding Click_delete_emp}">Удалить</Button>
                                 </StackPanel>
                                 
                             </StackPanel>

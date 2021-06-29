@@ -58,6 +58,7 @@ namespace ttask_vodovoz
                     {
                         emp.birthday = String.Concat(emp.birthday.Reverse().Skip(8).Reverse());
                     }
+                    connection.Close();
                     return _emp_fill;
                 }
                 catch (Exception ex)
@@ -99,7 +100,7 @@ namespace ttask_vodovoz
                         };
                         _dep_fill.Add(emp);
                     }
-                    
+                    connection.Close();
                     return _dep_fill;
                 }
                 catch (Exception ex)
@@ -146,6 +147,7 @@ namespace ttask_vodovoz
                     {
                         ord1.orderdate = String.Concat(ord1.orderdate.Reverse().Skip(8).Reverse());
                     }
+                    connection.Close();
                     return _orders_fill;
                 }
                 catch (Exception ex)

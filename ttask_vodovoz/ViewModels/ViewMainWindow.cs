@@ -410,9 +410,9 @@ namespace ttask_vodovoz
 
         public void delete_emp()
         {
-            if(Select_employee != null)
+            if(Selected_Employee_ID != null)
             {
-                sq.delete_employee(Select_employee.id.ToString());
+                sq.delete_employee(Selected_Employee_ID);
             }
             employee.Clear();
             fill_emp();
@@ -456,12 +456,12 @@ namespace ttask_vodovoz
             );
             //команда клика на добавление employee
             _click_add_employee = new DelegateCommand<string>(
-            (s) => { /* perform some action */ clear_emp(); }//, //Execute
+            (s) => { /* perform some action */ add_emp(); }//, //Execute
             //(s) => {  } //CanExecute
             );
             //команда клика на изменение employee
             _click_update_employee = new DelegateCommand<string>(
-            (s) => { /* perform some action */ clear_emp(); }//, //Execute
+            (s) => { /* perform some action */ update_emp(); }//, //Execute
             //(s) => {  } //CanExecute
             );
             //команда клика на очистку тб department
